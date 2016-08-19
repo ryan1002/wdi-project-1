@@ -27,10 +27,11 @@ function init(){
   // }
 
   function readMouseMove(e) {
-    var x_result = document.getElementById('textOne'); 
-    var y_result = document.getElementById('textTwo'); 
-    var x_result = e.eclientX;
-    var y_result = e.eclientY;
+    var x = e.clientX;
+    var y = e.clientY;
+    var coordinates = "Coordinates: (" + x + "," + y + ")";
+    document.getElementById("textOne").innerHTML = coordinates;
+
     // var coor = "Coordinates: (" + x + "," + y + ")";
     // document.getElementById("text").innerHTML = coor;
   }
