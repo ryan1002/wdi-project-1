@@ -13,16 +13,26 @@ function init(){
   var board = document.getElementById('gameBoard');
   // board.getBoundingClientRect()
   board.addEventListener('click', press);
-  board.addEventListener('onmousemove(event)', motionDetect);
-  board.addEventListener('onmouseout', clearCoor);
+  board.onmousemove = readMouseMove;
   var innerText = document.getElementById('text');
   // motion dectection
 
-  function motionDetect(event) {
-    var x = eclientX;
-    var y = eclientY;
-    var coor = "Coordinates: (" + x + "," + y + ")";
-    document.getElementById("text").innerHTML = coor;
+
+
+  // function readMouseMove(e) {
+  //   var resultX_innerHTML = document.getElementById("textOne");
+  //   var resultY_innerHTML = document.getElementById("textTwo");
+  //   resultX_innerHTML     = e.clientX;
+  //   resultX_innerHTML     = e.clientY;
+  // }
+
+  function readMouseMove(e) {
+    var x_result = document.getElementById('textOne'); 
+    var y_result = document.getElementById('textTwo'); 
+    var x_result = e.eclientX;
+    var y_result = e.eclientY;
+    // var coor = "Coordinates: (" + x + "," + y + ")";
+    // document.getElementById("text").innerHTML = coor;
   }
 
   function clearCoor() {
