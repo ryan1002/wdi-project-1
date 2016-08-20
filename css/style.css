@@ -21,12 +21,30 @@ p {
   margin: 0 auto;
   background: url('../images/forest.png');
 }
-img {
-  text-align: center;
+
+#border-of-game {
+  width: 996px;
+  height: 550px;
+  border: 4px solid purple;
+  margin: 0 auto;
+  margin-top: 10px;
+
 }
+
+#treasureContainer {
+  width: 1024px;
+  height: 576px;
+  border: medium solid transparent;
+  /* need to give container border to allow
+  border-of-game to have margin-top. Border 
+  is transparant */
+
+}
+
+
 .emptyDiv {
-  width: 10px;
-  height: 10px;
+  width: 50px;
+  height: 50px;
   border: 2px solid black;
   float: left;
 }
