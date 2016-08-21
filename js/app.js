@@ -21,14 +21,14 @@ function init(){
   board.addEventListener('click', press);
   board.onmousemove = readMouseMove;
   var innerText = document.getElementById('text');
-  var textFound = document.getElementById('textTwo');
+  var foundObject = document.getElementById('textTwo');
   // motion dectection
 
  //treasure coordinates 
 window.addEventListener('mousedown', function(a) {
   var x = a.clientX, y = a.clientY;
   if(x > 342 && y > 188 && x < 392 && y < 234){
-    textFound.innerHTML = "You found the treasure!!";
+    foundObject.innerHTML = "You found the treasure!!";
     alert('you found the treasure');
   } 
 
