@@ -65,7 +65,7 @@ function checkForHit(){
     // Show hot/cold based on the difference of x & y with the treasure.x and treasure.y
   }
   if (numberOfLives === 0){
-    console.log('your dead');
+    console.log('your loose');
   }
 
 }
