@@ -1,7 +1,3 @@
-/*body {
-  background: green;
-}*/
-
 h1 {
   font-family: 'Denk One', sans-serif;
   text-align: center;
@@ -14,37 +10,19 @@ p {
   font-family: 'Denk One', sans-serif;
   margin: -50px 0 0 0;
 }
+
 #gameBoard {
   width: 1024px;
   height: 576px;
   background: grey;
   margin: 0 auto;
   background: url('../images/forest.png');
+  position: relative;
 }
 
-#border-of-game {
-  width: 1000px;
-  height: 550px;
-  border: 4px solid purple;
-  margin: 0 auto;
-  margin-top: 10px;
-
-}
-
-#treasureContainer {
-  width: 1024px;
-  height: 576px;
-  border: medium solid transparent;
-  /* need to give container border to allow
-  border-of-game to have margin-top. Border 
-  is transparant */
-
-}
-
-
-.emptyDiv {
-  width: 48px;
-  height: 48px;
-  border: 1px solid black;
-  float: left;
+.gold {
+  width: 30px;
+  height: 30px;
+  background: gold;
+  position: absolute;
 }
