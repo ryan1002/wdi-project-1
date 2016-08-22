@@ -55,9 +55,12 @@ function checkForHit(){
   if (x <= upperX && x >= lowerX &&
       y <= upperY && y >= lowerY) {
     console.log("hit");
+    $("#display-text").text("You found the treasure!!");
     showTreasure();
+
   } else {
     console.log("Try again...")
+    $("#display-text").text("Try again !!");
     // Decrement lives
     // Show hot/cold based on the difference of x & y with the treasure.x and treasure.y
   }
