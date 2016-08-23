@@ -7,6 +7,15 @@ var  treasure        = {
   width:  30,
   height: 30
 };
+// sounds
+var win      = new Audio();
+var loose    = new Audio();
+var gameOver = new Audio();
+win.src      = "sounds/win_treasure.mp3";
+loose.src    = "sounds/loose.wav";
+gameOver.src = "sounds/game_over.wav";
+
+
 var $board, $start;
 
 // Run once the DOM is loaded
@@ -52,22 +61,53 @@ function checkForHit(){
   var upperY = treasure.y + treasure.height;
   var lowerY = treasure.y;
 
-  if (x <= upperX && x >= lowerX &&
-      y <= upperY && y >= lowerY) {
-    console.log("hit");
-    $("#display-text").text("You found the treasure!!");
-    showTreasure();
 
-  } else {
-    console.log("Try again...")
-    $("#display-text").text("Try again !!");
+
+  if (x <= upperX && x >= lowerX &&
+    y <= upperY && y >= lowerY) {
+    console.log("hit");
+  $("#display-text").text("You found the treasure!!");
+  showTreasure();
+  win.play();
+
+} else if (numberOfLives === 4){
+  console.log('try again');
+  $("#display-text").text("try again 4 lives left");
+  loose.play();
+
+} else if (numberOfLives === 3){
+  console.log('try again');
+  $("#display-text").text("try again 3 lives left");
+  loose.play();
+
+} else if (numberOfLives === 2){
+  console.log('try again');
+  $("#display-text").text("try again 2 lives left");
+  loose.play();
+
+} else if (numberOfLives === 1){
+  console.log('try again 1 life left');
+  $("#display-text").text("try again 1 lives left");
+  loose.play();
+
+} else if (numberOfLives === 0){
+  console.log('You loose');
+  $("#display-text").text("You loose");
+  gameOver.play();
+} else if (treasure.x > 5 && treasure.y > 5) {
+    console.log('you are very hot');
+    return;
+}
+
+else {
+
+  console.log("Try again...")
+  $("#display-text").text("Try again !!");
     // Decrement lives
     // Show hot/cold based on the difference of x & y with the treasure.x and treasure.y
   }
-  if (numberOfLives === 0){
-    console.log('your loose');
-  }
 
+// if rase x - clickx certain size less then 200 
 }
 
 function logPosition(){
