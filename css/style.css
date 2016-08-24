@@ -4,10 +4,6 @@ body {
 
 }
 
-img {
- 
-}
-
 h1 {
   font-family: "Denk One", sans-serif;
   text-align: center;
@@ -41,17 +37,14 @@ p {
 .gold {
   width: 30px;
   height: 30px;
-  background: gold;
   position: absolute;
 }
+
 #button-position {
   margin: 0 auto;
   width: 1024px;
   height: 75px;
   background-color: rgb(122, 69, 20);
-
-
-
 }
 
 button {
@@ -85,6 +78,7 @@ button {
 }
 #instructions {
   font-size: 16px;
+
 }
 
 

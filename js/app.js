@@ -20,8 +20,9 @@ var $board, $start;
 
 // Run once the DOM is loaded
 function init() {
-  $board = $("#gameBoard");
-  $start = $("#start");
+  $board  = $("#gameBoard");
+  $start  = $("#start");
+  $replay = $("#replayButton");
   setupStartButton();
 }
 
@@ -31,12 +32,13 @@ function startGame(){
   setupMouseEvent();
 }
 
+ 
 // Choose random position WITHIN the game board
 function chooseTreasurePosition(){
   treasure.x       = randomIntFromInterval(treasure.width, $board.width()- treasure.width);
   treasure.y       = randomIntFromInterval(treasure.height, $board.height()- treasure.height);
   // Just for debugging
-console.log(treasure.x, treasure.y)
+
   showTreasure();
 }
 
@@ -45,6 +47,27 @@ function showTreasure(){
     .appendTo($board)
     .css("left", treasure.x)
     .css("top", treasure.y);
+
+    $('#gameBoard').mousemove(function() {
+      var mouseX = event.pageX - $(this).offset().left;
+      var mouseY = event.pageY - $(this).offset().top;
+      var upperX = treasure.x + treasure.width;
+      var lowerX = treasure.x;
+      var upperY = treasure.y + treasure.height;
+      var lowerY = treasure.y;
+
+      if(mouseX >= lowerX && mouseX <= upperX && mouseY >= lowerY && mouseY <= upperY) {
+        console.log("HOT")
+        $('#display-text').text("HOT!!")
+      } else {
+        $('#display-text').text("COLD!!")
+      }
+    })
+}
+
+function hotOrCold(mouseX, mouseY, treasureX, treasureY) {
+  // compare mouse coords to the treasure coords
+  console.log(mouseX, mouseY);
 }
 
 function randomIntFromInterval(min, max) {
@@ -54,21 +77,25 @@ function randomIntFromInterval(min, max) {
 function checkForHit(){
   numberOfLives--;
 
-  var x      = event.pageX - $(this).offset().left;
-  var y      = event.pageY - $(this).offset().top;
+  var x      = event.pageX - this.offsetLeft;
+  var y      = event.pageY - this.offsetTop;
   var upperX = treasure.x + treasure.width;
   var lowerX = treasure.x;
   var upperY = treasure.y + treasure.height;
   var lowerY = treasure.y;
 
-
-
   if (x <= upperX && x >= lowerX &&
     y <= upperY && y >= lowerY) {
     console.log("hit");
   $("#display-text").text("You found the treasure!!");
-  showTreasure();
+  $(".gold").css('background', 'gold');
+  
+  setTimeout(function() {
+    $(".gold").remove();
+  }, 1000)
   win.play();
+
+  $('#gameBoard').off('mousemove');
 
 } else if (numberOfLives === 4){
   console.log('try again');
@@ -121,6 +148,7 @@ function setupMouseEvent(){
 
 function setupClickEvent(){
   $board.on("click", checkForHit);
+  $replay.on("click", startGame);
 }
 
 function setupStartButton(){
